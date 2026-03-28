@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings | AI Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="settings">
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <main class="app-shell single-col">
+    <header class="hero">
+      <p class="kicker">AI-Based Image Generator</p>
+      <h1>Settings</h1>
+      <nav class="top-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="history.html">History</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html" class="active">Settings</a>
+        <a href="admin.html" class="admin-only hidden">Admin</a>
+        <button id="logoutBtn" type="button">Logout</button>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <h2>Generation Defaults</h2>
+      <form id="settingsForm">
+        <div class="grid-two">
+          <div>
+            <label for="defaultSteps">Default Steps</label>
+            <input id="defaultSteps" type="number" min="4" max="60" value="12" />
+          </div>
+          <div>
+            <label for="defaultGuidance">Default Guidance Scale</label>
+            <input id="defaultGuidance" type="number" min="1" max="20" step="0.1" value="6.5" />
+          </div>
+        </div>
+        <button type="submit">Save Settings</button>
+      </form>
+      <p class="status" id="settingsStatus">Adjust and save your defaults.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | AI Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="login">
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <main class="app-shell single-col">
+    <header class="hero">
+      <p class="kicker">AI-Based Image Generator</p>
+      <h1>Secure Access<br />For Your Style Engine</h1>
+      <p class="subhead">Login with email, user ID, or GitHub to continue.</p>
+    </header>
+
+    <section class="panel auth-card">
+      <div class="auth-tabs">
+        <button id="showLoginBtn" class="tab active" type="button">Login</button>
+        <button id="showRegisterBtn" class="tab" type="button">Register</button>
+      </div>
+
+      <form id="authForm">
+        <label for="authLogin">Email or User ID</label>
+        <input id="authLogin" type="text" placeholder="you@example.com or yourid" required />
+
+        <label for="authEmail" id="authEmailLabel" class="hidden">Email (register)</label>
+        <input id="authEmail" class="hidden" type="email" placeholder="you@example.com" />
+
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" minlength="6" required />
+
+        <button id="authSubmitBtn" type="submit">Login</button>
+      </form>
+
+      <div class="auth-divider"><span>Password Recovery</span></div>
+
+      <form id="forgotForm" class="mini-form">
+        <label for="forgotEmail">Email for reset token</label>
+        <input id="forgotEmail" type="email" placeholder="you@example.com" />
+        <button type="submit">Send Reset Token</button>
+      </form>
+
+      <form id="resetForm" class="mini-form">
+        <label for="resetToken">Reset Token</label>
+        <input id="resetToken" type="text" placeholder="paste token from email" />
+
+        <label for="newPassword">New Password</label>
+        <input id="newPassword" type="password" minlength="6" placeholder="new password" />
+
+        <button type="submit">Reset Password</button>
+      </form>
+
+      <div class="auth-divider"><span>or</span></div>
+      <a class="github-login" href="http://127.0.0.1:5000/api/auth/github/login">Continue with GitHub</a>
+      <p class="status" id="authStatus">Please sign in.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

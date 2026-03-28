@@ -1,0 +1,13 @@
+accelerate
+diffusers
+flask
+flask-cors
+gunicorn
+numpy
+pillow
+pyyaml
+requests
+safetensors
+torch
+torchvision
+transformers

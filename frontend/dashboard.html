@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | AI Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="dashboard">
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <main class="product-shell">
+    <aside class="shell-sidebar panel">
+      <div>
+        <p class="kicker">AI-Based Image Generator</p>
+        <h2 class="sidebar-title">Studio</h2>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav">
+        <button type="button" class="module-link active" data-target="workspace-generate">Generate</button>
+        <button type="button" class="module-link" data-target="workspace-history">History</button>
+        <button type="button" class="module-link" data-target="workspace-gallery">Saved Images</button>
+        <button type="button" class="module-link" data-target="workspace-settings">Settings</button>
+      </nav>
+
+      <div class="sidebar-user">
+        <p id="sidebarUserText">Signed in</p>
+        <a href="profile.html">Profile</a>
+        <a href="admin.html" class="admin-only hidden">Admin</a>
+        <button id="logoutBtn" type="button">Logout</button>
+      </div>
+    </aside>
+
+    <section class="shell-main">
+      <header class="shell-header panel">
+        <div>
+          <p class="kicker">Workspace</p>
+          <h1 id="workspaceTitle">Generate</h1>
+          <p class="subhead">Theme locked to <span id="themeBadge">loading...</span></p>
+          <p class="subhead model-line" id="modelLine">Model: loading...</p>
+        </div>
+        <div class="header-actions">
+          <button id="themeToggleBtn" type="button">Toggle Theme</button>
+          <a href="settings.html">Open Settings Page</a>
+        </div>
+      </header>
+
+      <section class="workspace-section" id="workspace-generate">
+        <div class="workspace-grid">
+          <section class="panel">
+            <h2>Prompt Input</h2>
+            <form id="generateForm">
+              <label for="prompt">Text Input</label>
+              <textarea id="prompt" rows="3" placeholder="a futuristic robot guardian in neon rain"></textarea>
+
+              <label for="promptEnhancer">Prompt Enhancer (optional)</label>
+              <input id="promptEnhancer" type="text" placeholder="cinematic, ultra-detailed" />
+
+              <div class="button-wrap">
+                <button type="submit">Generate</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="panel">
+            <h2>Control Panel</h2>
+            <label for="styleSelector">Style Selector</label>
+            <select id="styleSelector">
+              <option value="futuristic">Futuristic</option>
+              <option value="anime">Anime</option>
+              <option value="realistic">Realistic</option>
+              <option value="digital-art">Digital Art</option>
+            </select>
+
+            <div class="grid-two">
+              <div>
+                <label for="resolutionSelector">Resolution</label>
+                <select id="resolutionSelector">
+                  <option value="384x384">384x384</option>
+                  <option value="512x512" selected>512x512</option>
+                  <option value="768x768">768x768</option>
+                </select>
+              </div>
+              <div>
+                <label for="qualitySelector">Quality</label>
+                <select id="qualitySelector">
+                  <option value="standard" selected>Standard</option>
+                  <option value="hd">HD</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="negativePrompt">Negative Prompt (advanced)</label>
+            <input id="negativePrompt" type="text" placeholder="blurry, low quality" />
+
+            <div class="grid-two">
+              <div>
+                <label for="seed">Seed Control</label>
+                <input id="seed" type="number" placeholder="random if empty" />
+              </div>
+              <div>
+                <label for="steps">Steps</label>
+                <input id="steps" type="number" value="12" min="4" max="60" />
+              </div>
+            </div>
+
+            <label for="guidance">Guidance Scale</label>
+            <input id="guidance" type="number" value="6.5" min="1" max="20" step="0.1" />
+          </section>
+
+          <section class="panel">
+            <h2>Output Display</h2>
+            <div class="loader hidden" id="outputLoader">Generating...</div>
+            <div class="image-frame" id="imageFrame">
+              <p class="placeholder">Generated image appears here.</p>
+            </div>
+            <p id="statusText" class="status">Ready.</p>
+          </section>
+
+          <section class="panel">
+            <h2>Action Panel</h2>
+            <div class="action-row">
+              <a id="downloadBtn" class="download disabled" href="#" download>Download</a>
+              <button id="regenerateBtn" type="button">Regenerate</button>
+              <button id="shareBtn" type="button">Share</button>
+              <button id="saveToGalleryBtn" type="button">Save to Gallery</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="workspace-section hidden" id="workspace-history">
+        <section class="panel">
+          <h2>History Panel</h2>
+          <ul id="historyList"></ul>
+          <p id="historyStatus" class="status">Loading history...</p>
+        </section>
+      </section>
+
+      <section class="workspace-section hidden" id="workspace-gallery">
+        <section class="panel">
+          <h2>Gallery</h2>
+          <div class="gallery-grid" id="galleryGrid"></div>
+          <p id="galleryStatus" class="status">No saved images yet.</p>
+        </section>
+      </section>
+
+      <section class="workspace-section hidden" id="workspace-settings">
+        <section class="panel">
+          <h2>Settings</h2>
+          <form id="workspaceSettingsForm">
+            <div class="grid-two">
+              <div>
+                <label for="defaultSteps">Performance: Default Steps</label>
+                <input id="defaultSteps" type="number" min="4" max="60" value="12" />
+              </div>
+              <div>
+                <label for="defaultGuidance">Performance: Default Guidance</label>
+                <input id="defaultGuidance" type="number" min="1" max="20" step="0.1" value="6.5" />
+              </div>
+            </div>
+
+            <label for="apiConfig">API Config</label>
+            <input id="apiConfig" type="text" readonly />
+
+            <button type="submit">Save Settings</button>
+          </form>
+          <p id="workspaceSettingsStatus" class="status">Adjust your workspace defaults.</p>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

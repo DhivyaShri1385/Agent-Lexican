@@ -1,0 +1,116 @@
+[
+  {
+    "timestamp": "2026-03-28T15:26:54.984070+00:00",
+    "prompt": "a futuristic robot warrior with glowing red eyes, standing in a rain-soaked neon city street, cinematic lighting, ultra-detailed, dramatic atmosphere",
+    "negative_prompt": "",
+    "steps": 30,
+    "guidance_scale": 7.5,
+    "seed": 1,
+    "theme": "futuristic robots",
+    "image_path": "outputs/2026-03-28T15-23-01.449986+00-00-a-futuristic-robot-warrior-with-glowing-.png"
+  },
+  {
+    "timestamp": "2026-03-28T15:34:15.037029+00:00",
+    "prompt": "a futuristic robot warrior with glowing red eyes, standing in a rain-soaked neon city street, cinematic lighting, ultra-detailed, dramatic atmosphere",
+    "negative_prompt": "",
+    "steps": 30,
+    "guidance_scale": 7.5,
+    "seed": 0,
+    "theme": "futuristic robots",
+    "image_path": "outputs/2026-03-28T15-32-51.876643+00-00-a-futuristic-robot-warrior-with-glowing-.png"
+  },
+  {
+    "timestamp": "2026-03-28T15:37:05.344457+00:00",
+    "prompt": "a futuristic robot in neon rain",
+    "negative_prompt": "",
+    "steps": 4,
+    "guidance_scale": 5.5,
+    "seed": 2,
+    "theme": "futuristic robots",
+    "image_path": "2026-03-28T15-36-50.319313+00-00-a-futuristic-robot-in-neon-rain.png",
+    "image_url": "/outputs/2026-03-28T15-36-50.319313+00-00-a-futuristic-robot-in-neon-rain.png"
+  },
+  {
+    "timestamp": "2026-03-28T15:39:02.511943+00:00",
+    "prompt": "a futuristic robot warrior with glowing red eyes, standing in a rain-soaked neon city street, cinematic lighting, ultra-detailed, dramatic atmosphere",
+    "negative_prompt": "",
+    "steps": 12,
+    "guidance_scale": 6.5,
+    "seed": 0,
+    "theme": "futuristic robots",
+    "image_path": "2026-03-28T15-38-31.424229+00-00-a-futuristic-robot-warrior-with-glowing-.png",
+    "image_url": "/outputs/2026-03-28T15-38-31.424229+00-00-a-futuristic-robot-warrior-with-glowing-.png"
+  },
+  {
+    "timestamp": "2026-03-28T15:41:11.821486+00:00",
+    "prompt": "a futuristic humanoid robot, glowing blue eyes, standing in a neon cyberpunk city, night time, cinematic lighting, ultra detailed, 4k",
+    "negative_prompt": "",
+    "steps": 12,
+    "guidance_scale": 6.5,
+    "seed": 0,
+    "theme": "futuristic robots",
+    "image_path": "2026-03-28T15-40-39.277305+00-00-a-futuristic-humanoid-robot-glowing-blue.png",
+    "image_url": "/outputs/2026-03-28T15-40-39.277305+00-00-a-futuristic-humanoid-robot-glowing-blue.png"
+  },
+  {
+    "timestamp": "2026-03-28T15:42:40.138623+00:00",
+    "prompt": "a goddess in traditional Indian painting style, intricate jewelry, vibrant colors, temple background, soft lighting, highly detailed",
+    "negative_prompt": "",
+    "steps": 12,
+    "guidance_scale": 6.5,
+    "seed": 0,
+    "theme": "futuristic robots",
+    "image_path": "2026-03-28T15-42-03.999854+00-00-a-goddess-in-traditional-indian-painting.png",
+    "image_url": "/outputs/2026-03-28T15-42-03.999854+00-00-a-goddess-in-traditional-indian-painting.png"
+  },
+  {
+    "timestamp": "2026-03-28T15:43:09.225289+00:00",
+    "prompt": "a goddess in traditional Indian painting style, intricate jewelry, vibrant colors, temple background, soft lighting, highly detailed",
+    "negative_prompt": "",
+    "steps": 12,
+    "guidance_scale": 6.5,
+    "seed": 0,
+    "theme": "futuristic robots",
+    "image_path": "2026-03-28T15-42-33.814545+00-00-a-goddess-in-traditional-indian-painting.png",
+    "image_url": "/outputs/2026-03-28T15-42-33.814545+00-00-a-goddess-in-traditional-indian-painting.png"
+  },
+  {
+    "timestamp": "2026-03-28T16:35:49.111458+00:00",
+    "prompt": "a futuristic robot in neon rain",
+    "negative_prompt": "",
+    "steps": 4,
+    "guidance_scale": 5.5,
+    "seed": null,
+    "theme": "futuristic robots",
+    "generated_by_user_id": "admin_demo",
+    "generated_by_email": "admin_demo@example.com",
+    "image_path": "2026-03-28T16-35-36.325542+00-00-a-futuristic-robot-in-neon-rain.png",
+    "image_url": "/outputs/2026-03-28T16-35-36.325542+00-00-a-futuristic-robot-in-neon-rain.png"
+  },
+  {
+    "timestamp": "2026-03-28T16:38:09.577045+00:00",
+    "prompt": "a powerful wizard casting a spell, glowing magic particles, dark forest background, dramatic lighting, fantasy art, highly detailed, style: futuristic",
+    "negative_prompt": "",
+    "steps": 12,
+    "guidance_scale": 6.5,
+    "seed": null,
+    "theme": "futuristic robots",
+    "generated_by_user_id": "dhivya",
+    "generated_by_email": "dhivyashri1325@gmail.com",
+    "image_path": "2026-03-28T16-37-21.410095+00-00-a-powerful-wizard-casting-a-spell-glowin.png",
+    "image_url": "/outputs/2026-03-28T16-37-21.410095+00-00-a-powerful-wizard-casting-a-spell-glowin.png"
+  },
+  {
+    "timestamp": "2026-03-28T16:43:23.561645+00:00",
+    "prompt": "a powerful wizard casting a spell, glowing magic particles, dark forest background, dramatic lighting, fantasy art, highly detailed, style: futuristic",
+    "negative_prompt": "",
+    "steps": 12,
+    "guidance_scale": 6.5,
+    "seed": null,
+    "theme": "futuristic robots",
+    "generated_by_user_id": "dhivya",
+    "generated_by_email": "dhivyashri1325@gmail.com",
+    "image_path": "2026-03-28T16-41-03.907231+00-00-a-powerful-wizard-casting-a-spell-glowin.png",
+    "image_url": "/outputs/2026-03-28T16-41-03.907231+00-00-a-powerful-wizard-casting-a-spell-glowin.png"
+  }
+]

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile | AI Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="profile">
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <main class="app-shell single-col">
+    <header class="hero">
+      <p class="kicker">AI-Based Image Generator</p>
+      <h1>User Profile</h1>
+      <nav class="top-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="history.html">History</a>
+        <a href="profile.html" class="active">Profile</a>
+        <a href="settings.html">Settings</a>
+        <a href="admin.html" class="admin-only hidden">Admin</a>
+        <button id="logoutBtn" type="button">Logout</button>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <h2>Account Details</h2>
+      <div class="profile-grid">
+        <p><strong>User ID:</strong> <span id="profileUserId">-</span></p>
+        <p><strong>Email:</strong> <span id="profileEmail">-</span></p>
+        <p><strong>GitHub:</strong> <span id="profileGithub">-</span></p>
+        <p><strong>Role:</strong> <span id="profileRole">-</span></p>
+      </div>
+      <p class="status" id="profileStatus">Loading profile...</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ai-image-generator
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 2 -k gthread --threads 4 -b 0.0.0.0:$PORT backend.app:app
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://your-frontend-domain.example
+      - key: BACKEND_URL
+        value: https://your-render-service.onrender.com
+      - key: ADMIN_EMAIL
+        value: your-admin-email@example.com
