@@ -10,64 +10,68 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="dashboard">
-  <div class="bg-shape bg-shape-one"></div>
-  <div class="bg-shape bg-shape-two"></div>
+  <main class="product-shell" aria-label="App Shell">
+    <aside class="shell-sidebar">
+      <div class="panel module-card">
+        <p class="module-label">2. Sidebar</p>
+        <p class="kicker">AI Image Generator</p>
+        <h2 class="sidebar-title">Vision Studio</h2>
 
-  <main class="product-shell">
-    <aside class="shell-sidebar panel">
-      <div>
-        <p class="kicker">AI-Based Image Generator</p>
-        <h2 class="sidebar-title">Studio</h2>
-      </div>
+        <nav class="sidebar-nav" id="sidebarNav" aria-label="Navigation Menu">
+          <button type="button" class="module-link active" data-target="workspace-generate">Generate</button>
+          <button type="button" class="module-link" data-target="workspace-history">History</button>
+          <button type="button" class="module-link" data-target="workspace-gallery">Saved Images</button>
+          <button type="button" class="module-link" data-target="workspace-settings">Settings</button>
+        </nav>
 
-      <nav class="sidebar-nav" id="sidebarNav">
-        <button type="button" class="module-link active" data-target="workspace-generate">Generate</button>
-        <button type="button" class="module-link" data-target="workspace-history">History</button>
-        <button type="button" class="module-link" data-target="workspace-gallery">Saved Images</button>
-        <button type="button" class="module-link" data-target="workspace-settings">Settings</button>
-      </nav>
-
-      <div class="sidebar-user">
-        <p id="sidebarUserText">Signed in</p>
-        <a href="profile.html">Profile</a>
-        <a href="admin.html" class="admin-only hidden">Admin</a>
-        <button id="logoutBtn" type="button">Logout</button>
+        <div class="sidebar-user">
+          <p id="sidebarUserText">Signed in</p>
+          <div class="sidebar-user-actions">
+            <a href="profile.html">Profile</a>
+            <a href="admin.html" class="admin-only hidden">Admin</a>
+            <button id="logoutBtn" type="button">Logout</button>
+          </div>
+        </div>
       </div>
     </aside>
 
-    <section class="shell-main">
-      <header class="shell-header panel">
+    <section class="shell-main" aria-label="Main Workspace">
+      <header class="panel shell-header module-card">
         <div>
-          <p class="kicker">Workspace</p>
-          <h1 id="workspaceTitle">Generate</h1>
-          <p class="subhead">Theme locked to <span id="themeBadge">loading...</span></p>
+          <p class="module-label">3. Header / Top Bar</p>
+          <p class="module-meta" id="breadcrumbTrail">App Shell / Main Workspace / Generate</p>
+          <h1 id="workspaceTitle">AI Image Generator</h1>
+          <p class="subhead">Theme: <span id="themeBadge">loading...</span></p>
           <p class="subhead model-line" id="modelLine">Model: loading...</p>
         </div>
         <div class="header-actions">
-          <button id="themeToggleBtn" type="button">Toggle Theme</button>
-          <a href="settings.html">Open Settings Page</a>
+          <button id="themeToggleBtn" type="button">Theme Toggle</button>
+          <a class="profile-icon" href="profile.html" aria-label="User profile">U</a>
         </div>
       </header>
 
       <section class="workspace-section" id="workspace-generate">
-        <div class="workspace-grid">
-          <section class="panel">
-            <h2>Prompt Input</h2>
+        <section class="workspace-grid">
+          <article class="panel module-card">
+            <p class="module-label">4. Prompt Input Module</p>
+            <h2>Prompt Module</h2>
             <form id="generateForm">
-              <label for="prompt">Text Input</label>
-              <textarea id="prompt" rows="3" placeholder="a futuristic robot guardian in neon rain"></textarea>
+              <label for="prompt">Text Input Box</label>
+              <textarea id="prompt" rows="4" placeholder="A cinematic portrait of a futuristic guardian in neon rain"></textarea>
 
               <label for="promptEnhancer">Prompt Enhancer (optional)</label>
-              <input id="promptEnhancer" type="text" placeholder="cinematic, ultra-detailed" />
+              <input id="promptEnhancer" type="text" placeholder="high detail, volumetric light, sharp focus" />
 
               <div class="button-wrap">
                 <button type="submit">Generate</button>
               </div>
             </form>
-          </section>
+          </article>
 
-          <section class="panel">
-            <h2>Control Panel</h2>
+          <article class="panel module-card">
+            <p class="module-label">5. Control Panel</p>
+            <h2>Generation Controls</h2>
+
             <label for="styleSelector">Style Selector</label>
             <select id="styleSelector">
               <option value="futuristic">Futuristic</option>
@@ -78,7 +82,7 @@
 
             <div class="grid-two">
               <div>
-                <label for="resolutionSelector">Resolution</label>
+                <label for="resolutionSelector">Resolution Selector</label>
                 <select id="resolutionSelector">
                   <option value="384x384">384x384</option>
                   <option value="512x512" selected>512x512</option>
@@ -86,7 +90,7 @@
                 </select>
               </div>
               <div>
-                <label for="qualitySelector">Quality</label>
+                <label for="qualitySelector">Quality Selector</label>
                 <select id="qualitySelector">
                   <option value="standard" selected>Standard</option>
                   <option value="hd">HD</option>
@@ -94,65 +98,84 @@
               </div>
             </div>
 
-            <label for="negativePrompt">Negative Prompt (advanced)</label>
-            <input id="negativePrompt" type="text" placeholder="blurry, low quality" />
+            <label for="negativePrompt">Negative Prompt Input (optional)</label>
+            <input id="negativePrompt" type="text" placeholder="blurry, noisy, low quality" />
 
             <div class="grid-two">
               <div>
-                <label for="seed">Seed Control</label>
+                <label for="seed">Seed Control (optional)</label>
                 <input id="seed" type="number" placeholder="random if empty" />
               </div>
               <div>
-                <label for="steps">Steps</label>
+                <label for="steps">Performance Steps</label>
                 <input id="steps" type="number" value="12" min="4" max="60" />
               </div>
             </div>
 
             <label for="guidance">Guidance Scale</label>
             <input id="guidance" type="number" value="6.5" min="1" max="20" step="0.1" />
-          </section>
+          </article>
 
-          <section class="panel">
-            <h2>Output Display</h2>
+          <article class="panel module-card">
+            <p class="module-label">6. Output Display Module</p>
+            <h2>Output Module</h2>
             <div class="loader hidden" id="outputLoader">Generating...</div>
             <div class="image-frame" id="imageFrame">
-              <p class="placeholder">Generated image appears here.</p>
+              <p class="placeholder">Generated image will appear here.</p>
             </div>
             <p id="statusText" class="status">Ready.</p>
-          </section>
+          </article>
 
-          <section class="panel">
-            <h2>Action Panel</h2>
+          <article class="panel module-card">
+            <p class="module-label">7. Action Panel</p>
+            <h2>Post-Generation Actions</h2>
             <div class="action-row">
               <a id="downloadBtn" class="download disabled" href="#" download>Download</a>
               <button id="regenerateBtn" type="button">Regenerate</button>
+              <button id="saveToGalleryBtn" type="button">Save</button>
               <button id="shareBtn" type="button">Share</button>
-              <button id="saveToGalleryBtn" type="button">Save to Gallery</button>
             </div>
-          </section>
-        </div>
+          </article>
+        </section>
       </section>
 
       <section class="workspace-section hidden" id="workspace-history">
-        <section class="panel">
-          <h2>History Panel</h2>
+        <article class="panel module-card">
+          <p class="module-label">8. History Panel</p>
+          <h2>Generation History</h2>
           <ul id="historyList"></ul>
           <p id="historyStatus" class="status">Loading history...</p>
-        </section>
+        </article>
       </section>
 
       <section class="workspace-section hidden" id="workspace-gallery">
-        <section class="panel">
-          <h2>Gallery</h2>
+        <article class="panel module-card">
+          <p class="module-label">9. Gallery</p>
+          <h2>Saved Image Grid</h2>
           <div class="gallery-grid" id="galleryGrid"></div>
           <p id="galleryStatus" class="status">No saved images yet.</p>
-        </section>
+        </article>
       </section>
 
       <section class="workspace-section hidden" id="workspace-settings">
-        <section class="panel">
-          <h2>Settings</h2>
+        <article class="panel module-card">
+          <p class="module-label">10. Settings Panel</p>
+          <h2>Application Settings</h2>
           <form id="workspaceSettingsForm">
+            <div class="grid-two">
+              <div>
+                <label for="themePreview">Theme Toggle</label>
+                <input id="themePreview" type="text" readonly />
+              </div>
+              <div>
+                <label for="modelPreview">Model Selection</label>
+                <input id="modelPreview" type="text" readonly />
+              </div>
+            </div>
+
+            <label for="apiConfig">API Config</label>
+            <input id="apiConfig" type="text" readonly />
+
             <div class="grid-two">
               <div>
                 <label for="defaultSteps">Performance: Default Steps</label>
@@ -164,13 +187,10 @@
               </div>
             </div>
 
-            <label for="apiConfig">API Config</label>
-            <input id="apiConfig" type="text" readonly />
-
             <button type="submit">Save Settings</button>
           </form>
-          <p id="workspaceSettingsStatus" class="status">Adjust your workspace defaults.</p>
-        </section>
+          <p id="workspaceSettingsStatus" class="status">Adjust and save your defaults.</p>
+        </article>
       </section>
     </section>
   </main>

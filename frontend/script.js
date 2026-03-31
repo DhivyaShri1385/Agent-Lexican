@@ -255,6 +255,7 @@ async function initDashboardPage(user) {
 	const galleryStatus = document.getElementById("galleryStatus");
 	const sidebarUserText = document.getElementById("sidebarUserText");
 	const workspaceTitle = document.getElementById("workspaceTitle");
+	const breadcrumbTrail = document.getElementById("breadcrumbTrail");
 	const themeToggleBtn = document.getElementById("themeToggleBtn");
 	const regenerateBtn = document.getElementById("regenerateBtn");
 	const shareBtn = document.getElementById("shareBtn");
@@ -266,6 +267,8 @@ async function initDashboardPage(user) {
 	const workspaceSettingsForm = document.getElementById("workspaceSettingsForm");
 	const workspaceSettingsStatus = document.getElementById("workspaceSettingsStatus");
 	const apiConfig = document.getElementById("apiConfig");
+	const themePreviewInput = document.getElementById("themePreview");
+	const modelPreviewInput = document.getElementById("modelPreview");
 	const defaultStepsInput = document.getElementById("defaultSteps");
 	const defaultGuidanceInput = document.getElementById("defaultGuidance");
 
@@ -276,10 +279,17 @@ async function initDashboardPage(user) {
 	let lastImageUrl = "";
 
 	const sectionTitleMap = {
-		"workspace-generate": "Generate",
-		"workspace-history": "History",
-		"workspace-gallery": "Saved Images",
-		"workspace-settings": "Settings",
+		"workspace-generate": "AI Image Generator",
+		"workspace-history": "History Panel",
+		"workspace-gallery": "Saved Images Gallery",
+		"workspace-settings": "Settings Panel",
+	};
+
+	const sectionBreadcrumbMap = {
+		"workspace-generate": "App Shell / Main Workspace / Generate",
+		"workspace-history": "App Shell / Main Workspace / History",
+		"workspace-gallery": "App Shell / Main Workspace / Saved Images",
+		"workspace-settings": "App Shell / Main Workspace / Settings",
 	};
 
 	function setStatus(message, isError = false) {
@@ -387,6 +397,9 @@ async function initDashboardPage(user) {
 		}
 
 		workspaceTitle.textContent = sectionTitleMap[sectionId] || "Workspace";
+		if (breadcrumbTrail) {
+			breadcrumbTrail.textContent = sectionBreadcrumbMap[sectionId] || "App Shell / Main Workspace";
+		}
 
 		if (sectionId === "workspace-history") {
 			loadHistoryModule();
@@ -397,7 +410,7 @@ async function initDashboardPage(user) {
 	}
 
 	function applyTheme(themeName) {
-		document.body.classList.toggle("theme-dark", themeName === "dark");
+		document.body.classList.toggle("theme-light", themeName === "light");
 		localStorage.setItem(UI_THEME_KEY, themeName);
 	}
 
@@ -405,6 +418,9 @@ async function initDashboardPage(user) {
 		const themeData = await apiRequest("/theme");
 		themeBadge.textContent = themeData.theme || "unknown";
 		modelLine.textContent = `Model: ${themeData.model_id || "unknown"}`;
+		if (modelPreviewInput) {
+			modelPreviewInput.value = themeData.model_id || "unknown";
+		}
 		sidebarUserText.textContent = user.user_id || user.email || "Signed in";
 		apiConfig.value = API_BASE;
 
@@ -418,12 +434,18 @@ async function initDashboardPage(user) {
 		modelLine.textContent = "Model: unknown";
 	}
 
-	const savedTheme = localStorage.getItem(UI_THEME_KEY) || "light";
+	const savedTheme = localStorage.getItem(UI_THEME_KEY) || "dark";
 	applyTheme(savedTheme);
+	if (themePreviewInput) {
+		themePreviewInput.value = savedTheme;
+	}
 
 	themeToggleBtn.addEventListener("click", () => {
-		const nextTheme = document.body.classList.contains("theme-dark") ? "light" : "dark";
+		const nextTheme = document.body.classList.contains("theme-light") ? "dark" : "light";
 		applyTheme(nextTheme);
+		if (themePreviewInput) {
+			themePreviewInput.value = nextTheme;
+		}
 	});
 
 	for (const navBtn of document.querySelectorAll(".module-link")) {

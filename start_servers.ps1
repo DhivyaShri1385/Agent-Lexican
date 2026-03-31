@@ -19,7 +19,6 @@ if (-not $pythonExe) {
 }
 
 $backendCommand = "Set-Location '$projectRoot'; & '$pythonExe' -m backend.app"
-$frontendCommand = "Set-Location '$projectRoot'; & '$pythonExe' -m http.server 5500 -d frontend"
 
 if ($SameWindow) {
     Write-Host "Starting backend in background job..."
@@ -29,17 +28,11 @@ if ($SameWindow) {
         & $py -m backend.app
     } -ArgumentList $projectRoot, $pythonExe | Out-Null
 
-    Write-Host "Starting frontend in background job..."
-    Start-Job -Name "ai-frontend" -ScriptBlock {
-        param($root, $py)
-        Set-Location $root
-        & $py -m http.server 5500 -d frontend
-    } -ArgumentList $projectRoot, $pythonExe | Out-Null
-
-    Write-Host "Servers started as jobs: ai-backend, ai-frontend"
+    Write-Host "Servers started as jobs: ai-backend"
     Write-Host "Use: Get-Job"
     Write-Host "Logs: Receive-Job -Name ai-backend -Keep"
-    Write-Host "Stop: Stop-Job -Name ai-backend,ai-frontend"
+    Write-Host "Stop: Stop-Job -Name ai-backend"
+    Write-Host "Application: http://127.0.0.1:5000"
     exit 0
 }
 
@@ -50,13 +43,6 @@ Start-Process powershell -ArgumentList @(
     "-Command", $backendCommand
 ) | Out-Null
 
-Write-Host "Starting frontend server in a new PowerShell window..."
-Start-Process powershell -ArgumentList @(
-    "-NoExit",
-    "-ExecutionPolicy", "Bypass",
-    "-Command", $frontendCommand
-) | Out-Null
-
 Write-Host "Done."
-Write-Host "Frontend: http://127.0.0.1:5500"
+Write-Host "Application: http://127.0.0.1:5000"
 Write-Host "Backend health: http://127.0.0.1:5000/health"
