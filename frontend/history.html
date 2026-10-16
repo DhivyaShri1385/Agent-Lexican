@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History | AI Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="history">
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <main class="product-shell">
+    <aside class="shell-sidebar">
+      <div class="panel module-card">
+        <h2 class="sidebar-title">Vision Studio</h2>
+        <nav class="sidebar-nav" aria-label="Navigation Menu">
+          <a class="module-link" href="dashboard.html">Generate</a>
+          <a class="module-link active" href="history.html">History</a>
+          <a class="module-link" href="gallery.html">Saved Images</a>
+          <a class="module-link" href="settings.html">Settings</a>
+        </nav>
+        <div class="sidebar-user">
+          <p id="sidebarUserText">Signed in</p>
+          <div class="sidebar-user-actions">
+            <a href="profile.html">Profile</a>
+            <a href="admin.html" class="admin-only hidden">Admin</a>
+            <button id="logoutBtn" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <section class="shell-main page-focus">
+      <header class="panel shell-header"><h1>History</h1></header>
+      <section class="panel page-panel">
+        <h2>Recent</h2>
+        <ul id="historyList"></ul>
+        <p class="status" id="historyStatus">Loading history...</p>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

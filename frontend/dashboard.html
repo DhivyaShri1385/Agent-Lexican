@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | AI Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="dashboard">
+  <main class="product-shell">
+    <aside class="shell-sidebar">
+      <div class="panel module-card">
+        <h2 class="sidebar-title">Vision Studio</h2>
+
+        <nav class="sidebar-nav" id="sidebarNav" aria-label="Navigation Menu">
+          <a class="module-link active" href="dashboard.html">Generate</a>
+          <a class="module-link" href="history.html">History</a>
+          <a class="module-link" href="gallery.html">Saved Images</a>
+          <a class="module-link" href="settings.html">Settings</a>
+        </nav>
+
+        <div class="sidebar-user">
+          <p id="sidebarUserText">Signed in</p>
+          <div class="sidebar-user-actions">
+            <a href="profile.html">Profile</a>
+            <a href="admin.html" class="admin-only hidden">Admin</a>
+            <button id="logoutBtn" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="shell-main">
+      <header class="panel shell-header module-card">
+        <div>
+          <p class="module-meta" id="breadcrumbTrail">Generate</p>
+          <h1 id="workspaceTitle">Create an image</h1>
+          <p class="subhead model-line"><span id="themeBadge">loading...</span><span id="modelLine">Model: loading...</span></p>
+        </div>
+        <div class="header-actions">
+          <button id="themeToggleBtn" type="button">Theme Toggle</button>
+          <a class="profile-icon" href="profile.html" aria-label="User profile">U</a>
+        </div>
+      </header>
+
+      <section class="workspace-section" id="workspace-generate">
+        <section class="workspace-grid">
+          <form id="generateForm" class="generation-form">
+            <article class="panel module-card step-card">
+              <div class="step-heading"><span class="step-number">01</span><div><p class="step-label">Start with the idea</p><h2>Prompt</h2></div></div>
+              <label for="prompt">What should we create?</label>
+              <textarea id="prompt" rows="5" placeholder="A cinematic portrait of a futuristic guardian in neon rain" required></textarea>
+              <label for="promptEnhancer">Creative direction <span class="optional">optional</span></label>
+              <input id="promptEnhancer" type="text" placeholder="high detail, volumetric light, sharp focus" />
+            </article>
+
+            <article class="panel module-card step-card">
+              <div class="step-heading"><span class="step-number">02</span><div><p class="step-label">Give it context</p><h2>Project details</h2></div></div>
+              <div class="grid-two">
+                <div><label for="projectName">Project name</label><input id="projectName" type="text" placeholder="Neon Guardian" /></div>
+                <div><label for="authorName">Author</label><input id="authorName" type="text" placeholder="Your name" /></div>
+              </div>
+              <label for="projectDetails">Project details</label>
+              <textarea id="projectDetails" rows="3" placeholder="Describe the subject, audience, mood, or visual direction"></textarea>
+              <label for="projectType">Type</label>
+              <select id="projectType">
+                <option value="concept art">Concept art</option>
+                <option value="character design">Character design</option>
+                <option value="product visual">Product visual</option>
+                <option value="scene illustration">Scene illustration</option>
+              </select>
+            </article>
+
+            <article class="panel module-card step-card">
+              <div class="step-heading"><span class="step-number">03</span><div><p class="step-label">Set the canvas</p><h2>Measurements</h2></div></div>
+              <div class="grid-two">
+                <div><label for="imageWidth">Width <span class="unit">px</span></label><input id="imageWidth" type="number" value="512" min="128" max="1024" step="64" /></div>
+                <div><label for="imageHeight">Height <span class="unit">px</span></label><input id="imageHeight" type="number" value="512" min="128" max="1024" step="64" /></div>
+              </div>
+              <div class="grid-two">
+                <div><label for="styleSelector">Style</label><select id="styleSelector"><option value="futuristic">Futuristic</option><option value="anime">Anime</option><option value="realistic">Realistic</option><option value="digital-art">Digital Art</option></select></div>
+                <div><label for="qualitySelector">Quality</label><select id="qualitySelector"><option value="standard" selected>Standard</option><option value="hd">HD</option></select></div>
+              </div>
+              <label for="negativePrompt">Avoid <span class="optional">optional</span></label>
+              <input id="negativePrompt" type="text" placeholder="blurry, noisy, low quality" />
+            </article>
+
+            <article class="panel module-card step-card generate-step">
+              <div class="step-heading"><span class="step-number">04</span><div><p class="step-label">Finish the setup</p><h2>Generate</h2></div></div>
+              <div class="grid-two">
+                <div><label for="steps">Steps</label><input id="steps" type="number" value="12" min="4" max="60" /></div>
+                <div><label for="guidance">Guidance</label><input id="guidance" type="number" value="6.5" min="1" max="20" step="0.1" /></div>
+              </div>
+              <label for="seed">Seed <span class="optional">optional</span></label>
+              <input id="seed" type="number" placeholder="Random if empty" />
+              <button class="primary-action" type="submit">Generate image</button>
+            </article>
+          </form>
+
+          <article class="panel module-card">
+            <h2>Result</h2>
+            <div class="loader hidden" id="outputLoader">Generating...</div>
+            <div class="image-frame" id="imageFrame">
+              <p class="placeholder">No image yet</p>
+            </div>
+            <p id="statusText" class="status">Ready.</p>
+          </article>
+
+          <article class="panel module-card">
+            <h2>Actions</h2>
+            <div class="action-row">
+              <a id="downloadBtn" class="download disabled" href="#" download>Download</a>
+              <button id="regenerateBtn" type="button">Regenerate</button>
+              <button id="saveToGalleryBtn" type="button">Save</button>
+              <button id="shareBtn" type="button">Share</button>
+            </div>
+          </article>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
