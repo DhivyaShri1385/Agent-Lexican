@@ -9,6 +9,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 outputs/
+backend_errors.log
 backend/__pycache__/
 backend/routes/__pycache__/
 backend/services/__pycache__/
